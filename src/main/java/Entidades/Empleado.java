@@ -12,6 +12,7 @@ public class Empleado {
     private String email;
     private Empresa empresa;
     private String rol;
+    private Movimientos[] movimientos;
 
     @OneToMany(mappedBy = "empleado")
 
@@ -53,6 +54,14 @@ public class Empleado {
      public void setRol(String rol){
         this.rol = rol;
      }
+
+    public Movimientos[] getMovimientos() {
+        return movimientos;
+    }
+
+    public void setMovimientos(Movimientos[] movimientos) {
+        this.movimientos = movimientos;
+    }
 
     public Empleado(){
 

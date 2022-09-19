@@ -1,22 +1,20 @@
-package Entidades;
+package com.misiontic2022.brotherssoftware.models;
 
-
-import net.bytebuddy.dynamic.loading.ClassReloadingStrategy;
-import org.hibernate.boot.registry.selector.spi.StrategyCreator;
-
-import javax.persistence.*;
-import java.util.List;
-
-@Entity
 public class Empresa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String nombre;
     private String direccion;
     private int numeroEmpresa;
     private int nitEmpresa;
 
-    @OneToMany(mappedBy = "Empresa")
+    public Empresa() {
+    }
+
+    public Empresa(String nombre, String direccion, int numeroEmpresa, int nitEmpresa) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.numeroEmpresa = numeroEmpresa;
+        this.nitEmpresa = nitEmpresa;
+    }
 
     public String getNombre() {
         return nombre;
@@ -49,5 +47,4 @@ public class Empresa {
     public void setNitEmpresa(int nitEmpresa) {
         this.nitEmpresa = nitEmpresa;
     }
-
 }

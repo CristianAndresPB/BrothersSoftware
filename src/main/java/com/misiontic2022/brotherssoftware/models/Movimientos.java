@@ -1,15 +1,20 @@
-package Entidades;
+package com.misiontic2022.brotherssoftware.models;
 
-import javax.persistence.*;
-
-@Entity
 public class Movimientos {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Integer montoMovimiento;
     private Integer montoNegativoyPosivitos;
     private String concepto;
+
+    public Movimientos() {
+    }
+
+    public Movimientos(Long id, Integer montoMovimiento, Integer montoNegativoyPosivitos, String concepto) {
+        this.id = id;
+        this.montoMovimiento = montoMovimiento;
+        this.montoNegativoyPosivitos = montoNegativoyPosivitos;
+        this.concepto = concepto;
+    }
 
     public Long getId() {
         return id;
@@ -41,21 +46,5 @@ public class Movimientos {
 
     public void setConcepto(String concepto) {
         this.concepto = concepto;
-    }
-
-    public Empleado getEmpleado1() {
-        return empleado1;
-    }
-
-    public void setEmpleado1(Empleado empleado1) {
-        this.empleado1 = empleado1;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "empleado1")
-    private Empleado empleado1;
-
-    public Movimientos(){
-
     }
 }

@@ -6,14 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="brotherssoftware" />
         <module name="Empresa" />
         <module name="demo" />
+        <module name="BrothersSoftware" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="BrothersSoftware" options="-parameters" />
       <module name="Empresa" options="-parameters" />
+      <module name="brotherssoftware" options="-parameters" />
       <module name="demo" options="-parameters" />
     </option>
   </component>

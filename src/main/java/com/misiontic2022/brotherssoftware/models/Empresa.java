@@ -1,10 +1,22 @@
 package com.misiontic2022.brotherssoftware.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="empresa")
 public class Empresa {
-    private String nombre;
-    private String direccion;
-    private int numeroEmpresa;
+
+    @Id
     private int nitEmpresa;
+    @Column
+    private String nombre;
+    @Column
+    private String direccion;
+    @Column
+    private int numeroEmpresa;
 
     public Empresa() {
     }

@@ -26,12 +26,13 @@ public class Empresa {
     public Empresa() {
     }
 
-    public Empresa(int nitEmpresa, String nombre, String direccion, int numeroEmpresa, List<Empleado> empleado) {
+    public Empresa(int nitEmpresa, String nombre, String direccion, int numeroEmpresa, List<Empleado> empleado, List<Movimientos> movimientos) {
         this.nitEmpresa = nitEmpresa;
         this.nombre = nombre;
         this.direccion = direccion;
         this.numeroEmpresa = numeroEmpresa;
         this.empleado = empleado;
+        this.movimientos = movimientos;
     }
 
     public int getNitEmpresa() {
@@ -72,5 +73,13 @@ public class Empresa {
 
     public void setEmpleado(List<Empleado> empleado) {
         this.empleado = empleado;
+    }
+
+    public List<Movimientos> getMovimientos() {
+        return movimientos;
+    }
+
+    public void setMovimientos(List<Movimientos> movimientos) {
+        this.movimientos = movimientos;
     }
 }

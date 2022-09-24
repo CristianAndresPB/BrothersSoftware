@@ -16,8 +16,10 @@ public class Empleado {
     private String email;
     @Column
     private String rol;
+    @JsonIgnore
     @OneToOne
     private Usuario usuario;
+    @JsonIgnore
     @ManyToOne
     private Empresa empresa;
     @JsonIgnore

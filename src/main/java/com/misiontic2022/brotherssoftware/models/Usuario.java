@@ -13,7 +13,7 @@ public class Usuario {
     private String password;
     @Column
     private String nombrePersona;
-    @JsonIgnore
+
     @OneToOne(mappedBy = "usuario")
     private Empleado empleado;
 

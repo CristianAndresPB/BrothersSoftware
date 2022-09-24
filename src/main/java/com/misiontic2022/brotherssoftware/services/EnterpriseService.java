@@ -31,10 +31,6 @@ public class EnterpriseService {
         return enterpriseRepository.save(empresa);
     }
 
-    public Empresa putUpdateEnterprise(Empresa empresa){
-        return enterpriseRepository.save(empresa);
-    }
-
     public Empresa patchUpdateEnterprise(Empresa empresa, String id) throws Exception{
         try {
             Empresa empresaDB = getEnterprise(id);

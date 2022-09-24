@@ -16,11 +16,11 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<Usuario> getUsuarios() {
+    public List<Usuario> getUsers() {
         return userRepository.findAll();
     }
 
-    public Usuario getUsuario(String id) throws Exception {
+    public Usuario getUser(String id) throws Exception {
         Optional<Usuario> usuarioOptional = userRepository.findById(id);
         if (usuarioOptional.isPresent()){
             return usuarioOptional.get();
@@ -30,16 +30,13 @@ public class UserService {
     }
 
     public Usuario saveUser(Usuario usuario){
-        return userRepository.save(usuario);
-    }
 
-    public Usuario putUpdateUser(Usuario usuario){
         return userRepository.save(usuario);
     }
 
     public Usuario patchUpdateUser(Usuario usuario, String id) throws Exception{
         try {
-            Usuario usuarioDB = getUsuario(id);
+            Usuario usuarioDB = getUser(id);
             if (usuario.getNombrePersona() != null){
                 usuarioDB.setNombrePersona(usuario.getNombrePersona());
             }

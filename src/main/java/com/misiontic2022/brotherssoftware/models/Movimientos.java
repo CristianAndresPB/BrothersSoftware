@@ -1,43 +1,50 @@
 package com.misiontic2022.brotherssoftware.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="movimientos")
 public class Movimientos {
-    private Long id;
-    private Integer montoMovimiento;
-    private Integer montoNegativoyPosivitos;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    @Column
+    private double montoMovimiento;
+    @Column
     private String concepto;
+    @ManyToOne
+    private Empresa empresa;
+    @ManyToOne
+    private Empleado empleado;
 
     public Movimientos() {
     }
 
-    public Movimientos(Long id, Integer montoMovimiento, Integer montoNegativoyPosivitos, String concepto) {
+    public Movimientos(int id, double montoMovimiento, String concepto, Empresa empresa, Empleado empleado) {
         this.id = id;
         this.montoMovimiento = montoMovimiento;
-        this.montoNegativoyPosivitos = montoNegativoyPosivitos;
         this.concepto = concepto;
+        this.empresa = empresa;
+        this.empleado = empleado;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Integer getMontoMovimiento() {
+    public double getMontoMovimiento() {
         return montoMovimiento;
     }
 
-    public void setMontoMovimiento(Integer montoMovimiento) {
+    public void setMontoMovimiento(double montoMovimiento) {
         this.montoMovimiento = montoMovimiento;
-    }
-
-    public Integer getMontoNegativoyPosivitos() {
-        return montoNegativoyPosivitos;
-    }
-
-    public void setMontoNegativoyPosivitos(Integer montoNegativoyPosivitos) {
-        this.montoNegativoyPosivitos = montoNegativoyPosivitos;
     }
 
     public String getConcepto() {
@@ -46,5 +53,21 @@ public class Movimientos {
 
     public void setConcepto(String concepto) {
         this.concepto = concepto;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 }

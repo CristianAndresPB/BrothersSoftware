@@ -1,9 +1,9 @@
 package com.misiontic2022.brotherssoftware.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="empresa")
@@ -17,14 +17,28 @@ public class Empresa {
     private String direccion;
     @Column
     private int numeroEmpresa;
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "empresa")
+    private List<Empleado> empleado;
+    @JsonIgnore
+    @OneToMany(mappedBy = "empresa")
+    private List<Movimientos> movimientos;
     public Empresa() {
     }
 
-    public Empresa(String nombre, String direccion, int numeroEmpresa, int nitEmpresa) {
+    public Empresa(int nitEmpresa, String nombre, String direccion, int numeroEmpresa, List<Empleado> empleado) {
+        this.nitEmpresa = nitEmpresa;
         this.nombre = nombre;
         this.direccion = direccion;
         this.numeroEmpresa = numeroEmpresa;
+        this.empleado = empleado;
+    }
+
+    public int getNitEmpresa() {
+        return nitEmpresa;
+    }
+
+    public void setNitEmpresa(int nitEmpresa) {
         this.nitEmpresa = nitEmpresa;
     }
 
@@ -52,11 +66,11 @@ public class Empresa {
         this.numeroEmpresa = numeroEmpresa;
     }
 
-    public int getNitEmpresa() {
-        return nitEmpresa;
+    public List<Empleado> getEmpleado() {
+        return empleado;
     }
 
-    public void setNitEmpresa(int nitEmpresa) {
-        this.nitEmpresa = nitEmpresa;
+    public void setEmpleado(List<Empleado> empleado) {
+        this.empleado = empleado;
     }
 }

@@ -1,9 +1,8 @@
 package com.misiontic2022.brotherssoftware.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="usuario")
@@ -14,14 +13,18 @@ public class Usuario {
     private String password;
     @Column
     private String nombrePersona;
+    @JsonIgnore
+    @OneToOne(mappedBy = "usuario")
+    private Empleado empleado;
 
     public Usuario() {
     }
 
-    public Usuario(String nombreUsuario, String password, String nombrePersona) {
+    public Usuario(String nombreUsuario, String password, String nombrePersona, Empleado empleado) {
         this.nombreUsuario = nombreUsuario;
         this.password = password;
         this.nombrePersona = nombrePersona;
+        this.empleado = empleado;
     }
 
     public String getNombreUsuario() {
@@ -46,5 +49,13 @@ public class Usuario {
 
     public void setNombrePersona(String nombrePersona) {
         this.nombrePersona = nombrePersona;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 }

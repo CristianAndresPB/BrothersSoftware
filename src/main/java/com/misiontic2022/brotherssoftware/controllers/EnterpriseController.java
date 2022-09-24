@@ -34,26 +34,11 @@ public class EnterpriseController {
         }
     }
 
-    @GetMapping("/enterprise")
-    public ResponseEntity<Object> getEnterprises(@RequestParam String id) {
-        try {
-            Empresa empresa = enterpriseService.getEnterprise(id);
-            return new ResponseEntity<>(empresa, HttpStatus.OK);
-        } catch (Exception ex) {
-            return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @PostMapping("/enterprises")
     public ResponseEntity<ObjectResponse> postEnterprise(@RequestBody Empresa empresa) {
         return new ResponseEntity<>(
                 new ObjectResponse(enterpriseService.saveEnterprise(empresa), "Empresa Creada Correctamente"),
                 HttpStatus.OK);
-    }
-
-    @PutMapping("/enterprises")
-    public ObjectResponse putUpdateEnterprise(@RequestBody Empresa empresa) {
-        return new ObjectResponse(enterpriseService.putUpdateEnterprise(empresa), "Empresa Actualizada Correctamente");
     }
 
     @PatchMapping("/enterprises/{id}")

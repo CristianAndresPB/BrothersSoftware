@@ -19,7 +19,7 @@ public class UserController {
     @GetMapping("/users")
     public ResponseEntity<List<Usuario>> getUsers() {
         return new ResponseEntity<List<Usuario>>(
-                userService.getUsuarios(),
+                userService.getUsers(),
                 HttpStatus.OK
         );
     }
@@ -27,33 +27,18 @@ public class UserController {
     @GetMapping("/user/{id}")
     public ResponseEntity<Object> getUser(@PathVariable String id) {
         try {
-            Usuario usuario = userService.getUsuario(id);
+            Usuario usuario = userService.getUser(id);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @GetMapping("/user")
-    public ResponseEntity<Object> getUsers(@RequestParam String id) {
-        try {
-            Usuario usuario = userService.getUsuario(id);
-            return new ResponseEntity<>(usuario, HttpStatus.OK);
-        } catch (Exception ex) {
-            return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @PostMapping("/user")
+    @PostMapping("/users")
     public ResponseEntity<ObjectResponse> postUser(@RequestBody Usuario usuario) {
         return new ResponseEntity<>(
                 new ObjectResponse(userService.saveUser(usuario), "Usuario Creado Correctamente"),
                 HttpStatus.OK);
-    }
-
-    @PutMapping("/user")
-    public ObjectResponse putUpdateUser(@RequestBody Usuario usuario) {
-        return new ObjectResponse(userService.putUpdateUser(usuario), "Usuario Actualizado Correctamente");
     }
 
     @PatchMapping("/user/{id}")

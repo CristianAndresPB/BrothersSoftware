@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -58,7 +58,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/">
+            <a class="nav-link collapsed" href="/dashboard">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
@@ -117,7 +117,7 @@
                                     <div class="col-lg-11">
                                     </div>
                                     <div class="col-lg-1 d-flex">
-                                        <button type="button" class="btn btn-primary">Nuevo</button>
+                                        <button type="button" class="btn btn-primary" onclick="location.href='/facturacion_form';">Nuevo</button>
                                     </div>
                                 </div>
 
@@ -125,20 +125,20 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th scope="col">#</th>
                                         <th scope="col">Concepto</th>
                                         <th scope="col">Monto</th>
-                                        <th scope="col">Fecha</th>
-                                        <th scope="col">Usuario</th>
+                                        <th scope="col">Nit Empresa</th>
+                                        <th scope="col">Nombre Empresa</th>
+                                        <th scope="col">Realizo por</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Compra</td>
-                                        <td>$2.000</td>
-                                        <td>19/09/2022</td>
-                                        <td>leidyprz11</td>
+                                    <tr th:each="movimiento : ${movimientos}">
+                                        <td th:text="${movimiento.concepto}"></td>
+                                        <td th:text="${movimiento.montoMovimiento}"></td>
+                                        <td th:text="${movimiento.empresa.nitEmpresa}"></td>
+                                        <td th:text="${movimiento.empresa.nombre}"></td>
+                                        <td th:text="${movimiento.empleado.name}"></td>
                                     </tr>
                                     </tbody>
                                 </table>

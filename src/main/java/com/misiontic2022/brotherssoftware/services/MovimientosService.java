@@ -14,7 +14,11 @@ public class MovimientosService {
     @Autowired
     private MovimientosRepository movimientosRepository;
 
-    public List<Movimientos> getMovements(int idEnterprise) {
+    public List<Movimientos> getMovements() {
+        return movimientosRepository.findAll();
+    }
+
+    public List<Movimientos> getMovementsByEnterprise(int idEnterprise) {
         return movimientosRepository.findAllByEmpresaNitEmpresa(idEnterprise);
     }
 

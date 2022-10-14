@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -58,7 +58,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/">
+            <a class="nav-link collapsed" href="/dashboard">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
@@ -103,13 +103,6 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-11">
-                            </div>
-                            <div class="col-lg-1 d-flex">
-                                <button type="button" class="btn btn-primary">Nuevo</button>
-                            </div>
-                        </div>
 
                         <!-- Bordered Tabs -->
                         <ul class="nav nav-tabs nav-tabs-bordered" id="borderedTab" role="tablist">
@@ -119,22 +112,33 @@
                         </ul>
                         <div class="tab-content pt-2" id="borderedTabContent">
                             <div class="tab-pane fade show active" id="bordered-home" role="tabpanel" aria-labelledby="home-tab">
+
+                                <div class="row">
+                                    <div class="col-lg-11">
+                                    </div>
+                                    <div class="col-lg-1 d-flex">
+                                        <button type="button" class="btn btn-primary" onclick="location.href='/usuarios_form'">Nuevo</button>
+                                    </div>
+                                </div>
+
                                 <!-- Default Table -->
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col">Nombre de Usuario</th>
+                                        <th scope="col">Id</th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Correo</th>
-                                        <th scope="col">Teléfono</th>
+                                        <th scope="col">Rol</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Leidy Perez</td>
-                                        <td>leidyprz11@hotmail.com</td>
-                                        <td>3332224433</td>
+                                    <tr th:each="usuario : ${usuarios}">
+                                        <td th:text="${usuario.nombreUsuario}"></td>
+                                        <td th:text="${usuario.empleado.id}"></td>
+                                        <td th:text="${usuario.nombrePersona}"></td>
+                                        <td th:text="${usuario.empleado.email}"></td>
+                                        <td th:text="${usuario.empleado.rol}"></td>
                                     </tr>
                                     </tbody>
                                 </table>

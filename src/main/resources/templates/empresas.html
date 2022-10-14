@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
@@ -58,7 +58,7 @@
   <ul class="sidebar-nav" id="sidebar-nav">
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="/">
+      <a class="nav-link collapsed" href="/dashboard">
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
       </a>
@@ -103,13 +103,6 @@
 
         <div class="card">
           <div class="card-body">
-            <div class="row">
-              <div class="col-lg-11">
-              </div>
-              <div class="col-lg-1 d-flex">
-                <button type="button" class="btn btn-primary">Nuevo</button>
-              </div>
-            </div>
 
             <!-- Bordered Tabs -->
             <ul class="nav nav-tabs nav-tabs-bordered" id="borderedTab" role="tablist">
@@ -119,22 +112,29 @@
             </ul>
             <div class="tab-content pt-2" id="borderedTabContent">
               <div class="tab-pane fade show active" id="bordered-home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row">
+                  <div class="col-lg-11">
+                  </div>
+                  <div class="col-lg-1 d-flex">
+                    <button type="button" class="btn btn-primary" onclick="location.href='/empresas_form';">Nuevo</button>
+                  </div>
+                </div>
                 <!-- Default Table -->
                 <table class="table">
                   <thead>
                   <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">Nit</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Dirección</th>
                     <th scope="col">Teléfono</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Pepito Software</td>
-                    <td>Calle 26 # 50-34</td>
-                    <td>6015550042</td>
+                  <tr th:each="empresa : ${empresas}">
+                    <td th:text="${empresa.nitEmpresa}"></td>
+                    <td th:text="${empresa.nombre}"></td>
+                    <td th:text="${empresa.direccion}"></td>
+                    <td th:text="${empresa.numeroEmpresa}"></td>
                   </tr>
                   </tbody>
                 </table>

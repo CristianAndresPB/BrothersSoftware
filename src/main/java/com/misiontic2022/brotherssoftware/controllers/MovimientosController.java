@@ -16,10 +16,18 @@ public class MovimientosController {
     @Autowired
     private MovimientosService movimientosService;
 
-    @GetMapping("/enterprises/{idEnterprise}/movements")
-    public ResponseEntity<List<Movimientos>> getMovements(@PathVariable int idEnterprise) {
+    @GetMapping("/enterprises/movements")
+    public ResponseEntity<List<Movimientos>> getMovements() {
         return new ResponseEntity<List<Movimientos>>(
-                movimientosService.getMovements(idEnterprise),
+                movimientosService.getMovements(),
+                HttpStatus.OK
+        );
+    }
+
+    @GetMapping("/enterprises/{idEnterprise}/movements")
+    public ResponseEntity<List<Movimientos>> getMovementsByEnterprise(@PathVariable int idEnterprise) {
+        return new ResponseEntity<List<Movimientos>>(
+                movimientosService.getMovementsByEnterprise(idEnterprise),
                 HttpStatus.OK
         );
     }

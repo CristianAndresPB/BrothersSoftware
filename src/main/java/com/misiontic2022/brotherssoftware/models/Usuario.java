@@ -4,6 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
+enum Rol{
+    Administrador,
+    Operativo
+}
+
 @Entity
 @Table(name="usuario")
 public class Usuario {
